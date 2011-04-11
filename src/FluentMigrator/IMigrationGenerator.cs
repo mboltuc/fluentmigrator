@@ -44,5 +44,6 @@ namespace FluentMigrator
         string Generate(UpdateDataExpression expression);
     string Generate(AlterSchemaExpression expression);
     string Generate(CreateDbObjectExpression expression);
+    string Generate(AlterDbObjectExpression expression);
 	}
 }

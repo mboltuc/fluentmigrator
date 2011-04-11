@@ -19,6 +19,7 @@
 using FluentMigrator.Builders.Alter.Column;
 using FluentMigrator.Builders.Alter.Table;
 using FluentMigrator.Infrastructure;
+using FluentMigrator.Builders.Create.DbObject;
 
 namespace FluentMigrator.Builders.Alter
 {
@@ -27,5 +28,6 @@ namespace FluentMigrator.Builders.Alter
 		//void Schema(string schemaName);
         IAlterTableAddColumnOrAlterColumnOrSchemaSyntax Table(string tableName);
 		IAlterColumnOnTableSyntax Column(string columnName);
+    ICreateOrAlterDbObjectFromSourceControlSyntax DbObject();
 	}
 }

@@ -20,6 +20,7 @@ using FluentMigrator.Builders.Alter.Column;
 using FluentMigrator.Builders.Alter.Table;
 using FluentMigrator.Expressions;
 using FluentMigrator.Infrastructure;
+using FluentMigrator.Builders.Create.DbObject;
 
 namespace FluentMigrator.Builders.Alter
 {
@@ -51,5 +52,12 @@ namespace FluentMigrator.Builders.Alter
 			_context.Expressions.Add(expression);
 			return new AlterColumnExpressionBuilder(expression, _context);
 		}
+
+    public ICreateOrAlterDbObjectFromSourceControlSyntax DbObject()
+    {
+      var expression = new AlterDbObjectExpression();
+      _context.Expressions.Add(expression);
+      return new CreateOrAlterDbObjectExpressionBuilder(expression);
+    }
 	}
 }

@@ -83,11 +83,11 @@ namespace FluentMigrator.Builders.Create
 			return new CreateIndexExpressionBuilder(expression);
 		}
 
-    public ICreateDbObjectFromSourceControlSyntax DbObject()
+    public ICreateOrAlterDbObjectFromSourceControlSyntax DbObject()
     {
       var expression = new CreateDbObjectExpression();
       _context.Expressions.Add(expression);
-      return new CreateDbObjectExpressionBuilder(expression);
+      return new CreateOrAlterDbObjectExpressionBuilder(expression);
     }
 	}
 }

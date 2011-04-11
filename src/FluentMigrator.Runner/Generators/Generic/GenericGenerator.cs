@@ -5,6 +5,7 @@ using FluentMigrator.Model;
 using FluentMigrator.Runner.Generators.Base;
 using System.Linq;
 using System.Data;
+using FluentMigrator.Runner.Extensions;
 
 namespace FluentMigrator.Runner.Generators.Generic
 {
@@ -279,10 +280,13 @@ namespace FluentMigrator.Runner.Generators.Generic
     public override string Generate(CreateDbObjectExpression expression)
     {
       var sqlText = expression.Repository.GetFileContents(expression.ScriptPath, expression.ScriptRevision);
-      int alterIndex = sqlText.IndexOf("ALTER ");
-      if (alterIndex != -1)
-        sqlText = sqlText.Substring(0, alterIndex) + "CREATE " + sqlText.Substring(alterIndex + 6);
-      return sqlText;
+      return sqlText.ReplaceFirst("ALTER ", "CREATE ");
+    }
+
+    public override string Generate(AlterDbObjectExpression expression)
+    {
+      var sqlText = expression.Repository.GetFileContents(expression.ScriptPath, expression.ScriptRevision);
+      return sqlText.ReplaceFirst("CREATE ", "ALTER ");
     }
 	}
 }

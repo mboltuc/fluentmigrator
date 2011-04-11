@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace FluentMigrator.Tests.Unit.Expressions
 {
-  public class CreateDbObjectExpressionTests
+  public class AlterDbObjectExpressionTests
   {
     [Test]
     public void ToStringIsDescriptive()
@@ -14,14 +14,14 @@ namespace FluentMigrator.Tests.Unit.Expressions
       const string scriptRevision = "1";
 
       var fakeRepo = new Mock<ISourceControlRepository>();
-      var expression = new CreateDbObjectExpression();
+      var expression = new AlterDbObjectExpression();
       expression.Repository = fakeRepo.Object;
       expression.ScriptPath = scriptPath;
       expression.ScriptRevision = scriptRevision;
 
       var expStr = expression.ToString();
 
-      Assert.That(expStr, Contains.Substring("CreateDbObject"));
+      Assert.That(expStr, Contains.Substring("AlterDbObject"));
       Assert.That(expStr, Contains.Substring(fakeRepo.Object.ToString()));
       Assert.That(expStr, Contains.Substring(scriptPath));
       Assert.That(expStr, Contains.Substring(scriptRevision));

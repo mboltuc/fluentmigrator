@@ -59,5 +59,6 @@ namespace FluentMigrator
         void Process(UpdateDataExpression expression);
         void Process( AlterSchemaExpression expression );
     void Process(CreateDbObjectExpression expression);
+    void Process(AlterDbObjectExpression expression);
 	}
 }

@@ -1,6 +1,6 @@
 ﻿namespace FluentMigrator.Expressions
 {
-  public class CreateDbObjectExpression : DbObjectExpressionBase
+  public class AlterDbObjectExpression : DbObjectExpressionBase
   {
     public override void ExecuteWith(IMigrationProcessor processor)
     {

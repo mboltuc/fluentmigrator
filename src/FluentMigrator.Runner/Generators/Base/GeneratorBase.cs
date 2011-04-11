@@ -50,6 +50,7 @@ namespace FluentMigrator.Runner.Generators.Base
 		public abstract string Generate(UpdateDataExpression expression);
 		public abstract string Generate(AlterSchemaExpression expression);
     public abstract string Generate(CreateDbObjectExpression expression);
+    public abstract string Generate(AlterDbObjectExpression expression);
 
 		public string Generate(AlterTableExpression expression)
 		{
