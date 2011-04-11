@@ -22,6 +22,7 @@ using FluentMigrator.Builders.Create.Index;
 using FluentMigrator.Builders.Create.Table;
 using FluentMigrator.Expressions;
 using FluentMigrator.Infrastructure;
+using FluentMigrator.Builders.Create.DbObject;
 
 namespace FluentMigrator.Builders.Create
 {
@@ -81,5 +82,12 @@ namespace FluentMigrator.Builders.Create
 			_context.Expressions.Add(expression);
 			return new CreateIndexExpressionBuilder(expression);
 		}
+
+    public ICreateDbObjectFromSourceControlSyntax DbObject()
+    {
+      var expression = new CreateDbObjectExpression();
+      _context.Expressions.Add(expression);
+      return new CreateDbObjectExpressionBuilder(expression);
+    }
 	}
 }

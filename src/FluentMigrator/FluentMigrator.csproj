@@ -128,6 +128,9 @@
     <Compile Include="Builders\Alter\Table\IAlterTableColumnAsTypeSyntax.cs" />
     <Compile Include="Builders\Alter\Table\IAlterTableColumnOptionOrAddColumnOrAlterColumnSyntax.cs" />
     <Compile Include="Builders\Create\Column\ICreateColumnAsTypeOrInSchemaSyntax.cs" />
+    <Compile Include="Builders\Create\DbObject\CreateDbObjectExpressionBuilder.cs" />
+    <Compile Include="Builders\Create\DbObject\ICreateDbObjectFromSourceControlSyntax.cs" />
+    <Compile Include="Builders\Create\DbObject\IMercurialSyntax.cs" />
     <Compile Include="Builders\Create\ForeignKey\ICreateForeignKeyPrimaryColumnOrInSchemaSyntax.cs" />
     <Compile Include="Builders\Create\ForeignKey\ICreateForeignKeyForeignColumnOrInSchemaSyntax.cs" />
     <Compile Include="Builders\Create\ForeignKey\ICreateForiegnKeyCascadeSyntax.cs" />
@@ -166,6 +169,11 @@
     <Compile Include="Expressions\AlterDefaultConstraintExpression.cs" />
     <Compile Include="Expressions\AlterTableExpression.cs" />
     <Compile Include="Expressions\AlterSchemaExpression.cs" />
+    <Compile Include="Expressions\CreateDbObjectExpression.cs" />
+    <Compile Include="Builders\Create\DbObject\ExternalCommand.cs" />
+    <Compile Include="Builders\Create\DbObject\IExternalCommand.cs" />
+    <Compile Include="Builders\Create\DbObject\ISourceControlRepository.cs" />
+    <Compile Include="Builders\Create\DbObject\MercurialRepository.cs" />
     <Compile Include="Expressions\DeleteDataExpression.cs" />
     <Compile Include="Expressions\ExecuteEmbeddedSqlScriptExpression.cs" />
     <Compile Include="Expressions\InsertDataExpression.cs" />

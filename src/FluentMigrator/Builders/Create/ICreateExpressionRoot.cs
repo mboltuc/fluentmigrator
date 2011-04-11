@@ -21,6 +21,7 @@ using FluentMigrator.Builders.Create.ForeignKey;
 using FluentMigrator.Builders.Create.Index;
 using FluentMigrator.Builders.Create.Table;
 using FluentMigrator.Infrastructure;
+using FluentMigrator.Builders.Create.DbObject;
 
 namespace FluentMigrator.Builders.Create
 {
@@ -33,5 +34,6 @@ namespace FluentMigrator.Builders.Create
 		ICreateForeignKeyFromTableSyntax ForeignKey(string foreignKeyName);
 		ICreateIndexForTableSyntax Index();
 		ICreateIndexForTableSyntax Index(string indexName);
+    ICreateDbObjectFromSourceControlSyntax DbObject();
 	}
 }
