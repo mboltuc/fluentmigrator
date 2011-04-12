@@ -16,6 +16,7 @@
 //
 #endregion
 
+using FluentMigrator.Runner.VcsProviders;
 namespace FluentMigrator.Runner.Initialization
 {
 	public interface IRunnerContext
@@ -33,6 +34,9 @@ namespace FluentMigrator.Runner.Initialization
 		IAnnouncer Announcer { get; }
 		IStopWatch StopWatch { get; }
 		int Timeout { get; set; }
+    string VcsProviderType { get; set; }
+    string VcsDirectory { get; set; }
+    IVcsProvider VcsProvider { get; }
 		//IMigrationProcessor Processor { get; }
 	}
 }

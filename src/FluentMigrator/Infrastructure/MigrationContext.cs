@@ -28,14 +28,16 @@ namespace FluentMigrator.Infrastructure
 		public virtual IMigrationConventions Conventions { get; set; }
 		public virtual ICollection<IMigrationExpression> Expressions { get; set; }
 		public virtual IQuerySchema QuerySchema { get; set; }
-        public virtual Assembly MigrationAssembly { get; set; }
+    public virtual Assembly MigrationAssembly { get; set; }
+    public virtual IVcsProvider VcsProvider { get; set; }
 
-		public MigrationContext(IMigrationConventions conventions, IQuerySchema querySchema, Assembly migrationAssembly)
+		public MigrationContext(IMigrationConventions conventions, IQuerySchema querySchema, Assembly migrationAssembly, IVcsProvider vcsProvider)
 		{
 			Conventions = conventions;
 			Expressions = new List<IMigrationExpression>();
 			QuerySchema = querySchema;
-            MigrationAssembly = migrationAssembly;
+      MigrationAssembly = migrationAssembly;
+      VcsProvider = vcsProvider;
 		}
 	}
 }

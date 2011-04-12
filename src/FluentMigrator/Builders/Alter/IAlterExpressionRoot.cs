@@ -25,7 +25,8 @@ namespace FluentMigrator.Builders.Alter
 	public interface IAlterExpressionRoot : IFluentSyntax
 	{
 		//void Schema(string schemaName);
-        IAlterTableAddColumnOrAlterColumnOrSchemaSyntax Table(string tableName);
+    IAlterTableAddColumnOrAlterColumnOrSchemaSyntax Table(string tableName);
 		IAlterColumnOnTableSyntax Column(string columnName);
+    void FromSourceControl(string pathToScript, string revision);
 	}
 }

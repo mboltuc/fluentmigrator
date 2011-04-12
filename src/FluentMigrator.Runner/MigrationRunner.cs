@@ -25,6 +25,7 @@ using System.Reflection;
 using FluentMigrator.Expressions;
 using FluentMigrator.Infrastructure;
 using FluentMigrator.Runner.Initialization;
+using FluentMigrator.Runner.VcsProviders;
 
 namespace FluentMigrator.Runner
 {
@@ -41,13 +42,15 @@ namespace FluentMigrator.Runner
 		public IProfileLoader ProfileLoader { get; set; }
 		public IMigrationConventions Conventions { get; private set; }
 		public IList<Exception> CaughtExceptions { get; private set; }
+    public IVcsProvider VcsProvider { get; private set; }
 
-		public MigrationRunner(Assembly assembly, IRunnerContext runnerContext, IMigrationProcessor processor)
+    public MigrationRunner(Assembly assembly, IRunnerContext runnerContext, IMigrationProcessor processor)
 		{
 			_migrationAssembly = assembly;
 			_announcer = runnerContext.Announcer;
 			Processor = processor;
 			_stopWatch = runnerContext.StopWatch;
+      VcsProvider = runnerContext.VcsProvider;
 
 			SilentlyFail = false;
 			CaughtExceptions = null;
@@ -274,7 +277,7 @@ namespace FluentMigrator.Runner
 
 			CaughtExceptions = new List<Exception>();
 
-			var context = new MigrationContext(Conventions, Processor,MigrationAssembly);
+			var context = new MigrationContext(Conventions, Processor,MigrationAssembly, VcsProvider);
 			migration.GetUpExpressions(context);
 
 			_stopWatch.Start();
@@ -292,7 +295,7 @@ namespace FluentMigrator.Runner
 
 			CaughtExceptions = new List<Exception>();
 
-			var context = new MigrationContext(Conventions, Processor, MigrationAssembly);
+			var context = new MigrationContext(Conventions, Processor, MigrationAssembly, VcsProvider);
 			migration.GetDownExpressions(context);
 
 			_stopWatch.Start();

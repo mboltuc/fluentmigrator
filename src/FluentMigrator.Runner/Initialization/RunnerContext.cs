@@ -3,6 +3,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using FluentMigrator.Runner.Processors;
+using FluentMigrator.Runner.VcsProviders;
 
 namespace FluentMigrator.Runner.Initialization
 {
@@ -17,6 +18,7 @@ namespace FluentMigrator.Runner.Initialization
 		private string ConfigFile;
 		private string ConnectionString;
 		private IMigrationProcessor _processor;
+    private IVcsProvider _vcsProvider;
 
 		private bool NotUsingConfig
 		{
@@ -34,6 +36,8 @@ namespace FluentMigrator.Runner.Initialization
 		public string WorkingDirectory { get; set; }
 		public string Profile { get; set; }
 		public int Timeout { get; set; }
+    public string VcsProviderType { get; set; }
+    public string VcsDirectory { get; set; }
 
 		public IAnnouncer Announcer
 		{
@@ -117,6 +121,16 @@ namespace FluentMigrator.Runner.Initialization
 				return _processor;
 			}
 		}
+
+    public IVcsProvider VcsProvider
+    {
+      get
+      {
+        if (_vcsProvider == null)
+          _vcsProvider = VcsProviderFactory.CreateProvider(VcsProviderType, VcsDirectory, Announcer);
+        return _vcsProvider;
+      }
+    }
 
 		private void ReadConnectionString(ConnectionStringSettings connection, string configurationFile)
 		{

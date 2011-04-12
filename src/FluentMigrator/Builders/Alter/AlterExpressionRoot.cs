@@ -51,5 +51,16 @@ namespace FluentMigrator.Builders.Alter
 			_context.Expressions.Add(expression);
 			return new AlterColumnExpressionBuilder(expression, _context);
 		}
+
+    public void FromSourceControl(string pathToScript, string revision)
+    {
+      var expression = new AlterFromSourceControlExpression()
+      {
+        VcsProvider = _context.VcsProvider,
+        ScriptPath = pathToScript,
+        ScriptRevision = revision
+      };
+      _context.Expressions.Add(expression);
+    }
 	}
 }

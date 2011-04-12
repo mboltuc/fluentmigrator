@@ -22,6 +22,7 @@ using FluentMigrator.Runner;
 using FluentMigrator.Runner.Announcers;
 using FluentMigrator.Runner.Initialization;
 using FluentMigrator.Runner.Processors;
+using FluentMigrator.Runner.VcsProviders;
 using Mono.Options;
 
 namespace FluentMigrator.Console
@@ -36,7 +37,7 @@ namespace FluentMigrator.Console
 		public string Namespace;
 		public string Task;
 		public bool Output;
-	    public string OutputFilename;
+	  public string OutputFilename;
 		public long Version;
 		public int Steps;
 		public string TargetAssembly;
@@ -44,6 +45,8 @@ namespace FluentMigrator.Console
 		public string Profile;
 		public int Timeout;
 		public bool ShowHelp;
+    public string VcsProviderType;
+    public string VcsDirectory;
 
 		static void DisplayHelp( OptionSet p )
 		{
@@ -155,6 +158,17 @@ namespace FluentMigrator.Console
 						"Overrides the default SqlCommand timeout of 30 seconds.",
 						v => { Timeout = int.Parse(v); }
 					},
+          {
+            "vcsprovidertype=|vcs=",
+						string.Format("The kind of version control system your sql scripts are in. Available choices are: {0}.",
+						  VcsProviderFactory.ListAvailableVCSProviders()),
+						v => { VcsProviderType = v; }
+          },
+          {
+						"vcsdirectory=|vcsd=",
+						"The directory to load version controlled SQL scripts specified by migrations from. When using relative paths, path is relative to this executable.",
+						v => { VcsDirectory = v; }
+					},
 					{
 						"help|h|?",
 						"Displays this help menu.",
@@ -259,6 +273,8 @@ namespace FluentMigrator.Console
 				WorkingDirectory = WorkingDirectory,
 				Profile = Profile,
 				Timeout = Timeout,
+        VcsProviderType = VcsProviderType,
+        VcsDirectory = VcsDirectory
 			};
 
 			new TaskExecutor( runnerContext ).Execute();

@@ -56,6 +56,12 @@ namespace FluentMigrator.NAnt
 		[TaskAttribute( "timeout" )]
 		public int Timeout { get; set; }
 
+    [TaskAttribute("vcsprovidertype")]
+    public string VcsProviderType { get; set; }
+
+    [TaskAttribute("vcsdirectory")]
+    public string VcsDirectory { get; set; }
+    
 		protected override void ExecuteTask()
 		{
 			var announcer = new TextWriterAnnouncer(System.Console.Out)
@@ -75,7 +81,9 @@ namespace FluentMigrator.NAnt
 										Steps = Steps,
 										WorkingDirectory = WorkingDirectory,
 										Profile = Profile,
-								Timeout = Timeout
+								    Timeout = Timeout,
+                    VcsProviderType = VcsProviderType,
+                    VcsDirectory = VcsDirectory
 									};
 
 			new TaskExecutor(runnerContext).Execute();

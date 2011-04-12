@@ -41,5 +41,8 @@ namespace FluentMigrator.Infrastructure
 		public const string SqlScriptCannotBeNullOrEmpty = "The sql script cannot be null or an empty string";
 		public const string OperationCannotBeNull = "The operation to be performed using the database connection cannot be null";
     public const string DestinationSchemaCannotBeNull = "The destination schema's name cannot be null or an empty string";
+    public const string VcsProviderCannotBeNull = "The VCS Provider cannot be null";
+    public const string ScriptPathCannotBeNullOrEmpty = "The script path cannot be null or an empty string";
+    public const string ScriptRevisionCannotBeNullOrEmpty = "The script revision cannot be null or an empty string";
 	}
 }

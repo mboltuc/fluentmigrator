@@ -81,5 +81,16 @@ namespace FluentMigrator.Builders.Create
 			_context.Expressions.Add(expression);
 			return new CreateIndexExpressionBuilder(expression);
 		}
+
+    public void FromSourceControl(string pathToScript, string revision)
+    {
+      var expression = new CreateFromSourceControlExpression()
+      {
+        VcsProvider = _context.VcsProvider,
+        ScriptPath = pathToScript,
+        ScriptRevision = revision
+      };
+      _context.Expressions.Add(expression);
+    }
 	}
 }

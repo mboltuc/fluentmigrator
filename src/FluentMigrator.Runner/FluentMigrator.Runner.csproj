@@ -142,6 +142,7 @@
     <Compile Include="Announcers\NullAnnouncer.cs" />
     <Compile Include="Announcers\TextWriterAnnouncer.cs" />
     <Compile Include="CompatabilityMode.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Generators\Base\ColumnBase.cs" />
     <Compile Include="Extensions\CompatabilityModeExtension.cs" />
     <Compile Include="Generators\Generic\GenericQuoter.cs" />
@@ -223,6 +224,11 @@
     <Compile Include="ProfileLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StopWatch.cs" />
+    <Compile Include="VcsProviders\ExternalCommand.cs" />
+    <Compile Include="VcsProviders\IExternalCommand.cs" />
+    <Compile Include="VcsProviders\MercurialProvider.cs" />
+    <Compile Include="VcsProviders\VcsProviderBase.cs" />
+    <Compile Include="VcsProviders\VcsProviderFactory.cs" />
     <Compile Include="Versioning\VersionInfo.cs" />
     <Compile Include="Versioning\VersionMigration.cs" />
     <Compile Include="VersionLoader.cs" />

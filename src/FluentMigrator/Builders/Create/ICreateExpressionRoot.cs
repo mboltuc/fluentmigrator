@@ -33,5 +33,6 @@ namespace FluentMigrator.Builders.Create
 		ICreateForeignKeyFromTableSyntax ForeignKey(string foreignKeyName);
 		ICreateIndexForTableSyntax Index();
 		ICreateIndexForTableSyntax Index(string indexName);
+    void FromSourceControl(string pathToScript, string revision);
 	}
 }

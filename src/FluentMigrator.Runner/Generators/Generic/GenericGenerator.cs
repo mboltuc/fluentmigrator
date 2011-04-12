@@ -5,6 +5,7 @@ using FluentMigrator.Model;
 using FluentMigrator.Runner.Generators.Base;
 using System.Linq;
 using System.Data;
+using FluentMigrator.Runner.Extensions;
 
 namespace FluentMigrator.Runner.Generators.Generic
 {
@@ -276,5 +277,16 @@ namespace FluentMigrator.Runner.Generators.Generic
 			return compatabilityMode.HandleCompatabilty("Schemas are not supported");
 		}
 
+    public override string Generate(CreateFromSourceControlExpression expression)
+    {
+      var sqlText = expression.GetSqlText();
+      return sqlText.ReplaceFirst("ALTER ", "CREATE ");
+    }
+
+    public override string Generate(AlterFromSourceControlExpression expression)
+    {
+      var sqlText = expression.GetSqlText();
+      return sqlText.ReplaceFirst("CREATE ", "ALTER ");
+    }
 	}
 }
