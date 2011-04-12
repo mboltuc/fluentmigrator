@@ -37,7 +37,7 @@ namespace FluentMigrator.Console
 		public string Namespace;
 		public string Task;
 		public bool Output;
-	  public string OutputFilename;
+	    public string OutputFilename;
 		public long Version;
 		public int Steps;
 		public string TargetAssembly;
